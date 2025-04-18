@@ -1,7 +1,9 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+
+import { Inter, JetBrains_Mono } from "next/font/google"
+
+import type { Metadata } from "next"
+import type React from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
@@ -17,7 +19,6 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Cyberbullying Detector",
   description: "Detect cyberbullying in text using Gemini 2.0 Flash AI",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

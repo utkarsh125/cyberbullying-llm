@@ -1,18 +1,19 @@
 "use client"
 
-import type React from "react"
+import { AlertTriangle, CheckCircle, Loader2, Moon, Shield, Sun } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
-import { useState, useRef, useEffect } from "react"
-import { motion } from "framer-motion"
-import gsap from "gsap"
-import { detectCyberbullying } from "@/app/actions"
-import { Loader2, Shield, AlertTriangle, CheckCircle, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import type React from "react"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
+import { detectCyberbullying } from "@/app/actions"
+import dynamic from "next/dynamic"
+import gsap from "gsap"
+import { motion } from "framer-motion"
 import { useTheme } from "next-themes"
 
-export default function CyberBullyingDetector() {
+function CyberBullyingDetector() {
   const [text, setText] = useState("")
   const [result, setResult] = useState<{
     isCyberbullying: boolean
@@ -206,3 +207,7 @@ export default function CyberBullyingDetector() {
     </div>
   )
 }
+export default dynamic(
+  () => Promise.resolve(CyberBullyingDetector),
+  { ssr: false }
+);
